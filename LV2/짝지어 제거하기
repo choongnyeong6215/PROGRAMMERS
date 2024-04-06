@@ -1,0 +1,24 @@
+// 1차 풀이 (효율성 테스트 실패)
+function solution(s) {
+  let arr = s.split("");
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] === arr[i - 1]) {
+      arr.splice(i - 1, 2);
+    }
+  }
+
+  return arr.length ? 0 : 1;
+}
+
+// 2차 풀이
+function solution(s) {
+  const stack = [];
+
+  for (let alpha of s) {
+    if (alpha === stack[stack.length - 1]) stack.pop();
+    else stack.push(alpha);
+  }
+
+  return stack.length ? 0 : 1;
+}
