@@ -1,15 +1,11 @@
 function solution(cards1, cards2, goal) {
-  let existCardCnt = 0;
+  const stack = [];
 
-  goal.forEach((v, idx) => {
-    if (cards1[0] === goal[idx]) {
-      cards1.shift();
-      existCardCnt++;
-    } else if (cards2[0] === goal[idx]) {
-      cards2.shift();
-      existCardCnt++;
-    }
+  goal.forEach((v) => {
+    if (v === cards1[0]) stack.push(cards1.shift());
+
+    if (v === cards2[0]) stack.push(cards2.shift());
   });
 
-  return existCardCnt === goal.length ? "Yes" : "No";
+  return goal.join("") === stack.join("") ? "Yes" : "No";
 }
